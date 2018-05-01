@@ -2,16 +2,16 @@
 
 import common from '../common';
 
-let greetInEN = function (str: string): string {
-    return 'Hello ' + common.toUpperCase(str);
+let greetInEN = function (name: string): string {
+    return 'Hello ' + common.toUpperCase(name);
 };
 
-let greetInDE = function (str: string): string {
-    return 'Hallo ' + common.toUpperCase(str);
+let greetInDE = function (name: string): string {
+    return 'Hallo ' + common.toUpperCase(name);
 };
 
-let greetInIT = function (str: string): string {
-    return 'Ciao ' + common.toUpperCase(str);
+let greetInIT = function (name: string): string {
+    return 'Ciao ' + common.toUpperCase(name);
 };
 
 export class Greeter {
@@ -19,14 +19,14 @@ export class Greeter {
         constructor() {    
         }
     
-        greet = function (str: string, lang: string) {
+        greet = function (name: string, lang: string) {
             switch (lang) {
                 case 'DE':
-                    return greetInDE(str);
+                    return greetInDE(name);
                 case 'IT':
-                    return greetInIT(str);
+                    return greetInIT(name);
                 default:
-                    return greetInEN(str);
+                    return greetInEN(name);
             }
         }
     };

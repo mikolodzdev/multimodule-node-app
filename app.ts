@@ -6,7 +6,7 @@ import {Greeter} from './domain-greeter/Greeter';
 import {Notifier} from './domain-notifier/Notifier';
 import {GreetingSubscriber} from './infrastructure-greeter/GreetingSubscriber';
 import {NotificationSubscriber} from './infrastructure-notifier/NotificationSubscriber';
-import {MailApi} from './infrastructure-notifier/MailApi';
+import {MailApiImpl} from './infrastructure-notifier/MailApiImpl';
 import {SmsApi} from './infrastructure-notifier/SmsApi';
 import {RestApi} from './infrastructure-greeter/RestApi';
 import {PubSub} from './middleware/PubSub';
@@ -16,7 +16,7 @@ let app = Express();
 new RestApi( new Greeter()).initRoutes(app);
 
 let pubsub = new PubSub();
-pubsub.subscribe(new NotificationSubscriber(new Notifier(new MailApi(), new SmsApi())));
+pubsub.subscribe(new NotificationSubscriber(new Notifier(new MailApiImpl(), new SmsApi())));
 pubsub.subscribe(new GreetingSubscriber());
 
 app.listen(env.server.PORT);

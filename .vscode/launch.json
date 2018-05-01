@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "nodemon",
+            "name": "nodemon dist/app.js JS File",
             "runtimeExecutable": "nodemon",
             "program": "${workspaceRoot}/dist/app.js",
             "restart": true,
@@ -18,12 +18,44 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "node",
+            "name": "node dist/app.js JS File",
             "runtimeExecutable": "node",            
             "program": "${workspaceRoot}/dist/app.js",
             "outFiles": [
                 "${workspaceRoot}/out/**/*.js"
             ]
+        },
+
+        {
+            "name": "ts-node current TS File",
+            "type": "node",
+            "request": "launch",
+            "args": ["${relativeFile}"],
+            "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+            "sourceMaps": true,
+            "cwd": "${workspaceRoot}",
+            "protocol": "inspector"
+        },
+
+        {
+            "name": "ts-node app.ts TS File",
+            "type": "node",
+            "request": "launch",
+            "args": ["${workspaceRoot}/app.ts"],
+            "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+            "sourceMaps": true,
+            "cwd": "${workspaceRoot}",
+            "protocol": "inspector"
+        },
+
+        {
+            "name": "Current TS Tests File",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "args": ["-r", "ts-node/register", "${relativeFile}"],
+            "cwd": "${workspaceRoot}",
+            "protocol": "inspector"
         }
     ]
 }
